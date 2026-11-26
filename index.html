@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizarra Táctica Free Fire Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h2>Pizarra Táctica</h2>
+
+    <div>
+      <div class="section-title">1. Mapa</div>
+      <select id="presetMap" class="map-select">
+        <option value="">-- Seleccionar mapa --</option>
+        <option value="mapas/bermuda.jpg">🏝️ Bermuda</option>
+        <option value="mapas/purgatorio.jpg">🌲 Purgatorio</option>
+        <option value="mapas/kalahari.jpg">🏜️ Kalahari</option>
+        <option value="mapas/nexterra.jpg">🔮 NexTerra</option>
+        <option value="mapas/alpes.jpg">🏔️ Alpes</option>
+        <option value="mapas/solara.jpg">☀️ Solara</option>
+      </select>
+      <label class="file-label" style="margin-top: 6px;">
+        📁 Subir otro mapa
+        <input type="file" id="mapLoader" accept="image/*">
+      </label>
+    </div>
+
+    <div>
+      <div class="section-title">2. Trazos y Texto</div>
+      <div class="btn-grid">
+        <button class="tool-btn active" data-tool="pen">✏️ Pincel</button>
+        <button class="tool-btn" data-tool="arrow">➡️ Flecha</button>
+        <button class="tool-btn" data-tool="line">📏 Línea</button>
+        <button class="tool-btn" data-tool="circle">⭕ Zona</button>
+        <button class="tool-btn" data-tool="text" style="grid-column: span 2;">🔤 Etiqueta de Texto</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title">3. Marcadores (Clic)</div>
+      <div class="btn-grid">
+        <button class="tool-btn" data-tool="squad">🎯 Escuadra</button>
+        <button class="tool-btn" data-tool="enemy">💀 Enemigo</button>
+        <button class="tool-btn" data-tool="drop">🪂 Caída</button>
+        <button class="tool-btn" data-tool="flag">🚩 Objetivo</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title">4. Equipos FFWS LATAM</div>
+      <div id="latamGrid" class="latam-grid"></div>
+      <div class="team-creator" style="margin-top: 8px;">
+        <input type="text" id="teamTag" maxlength="10" placeholder="Otro equipo...">
+        <input type="color" id="teamColor" value="#ff9f1c">
+        <button id="addTeamBtn" type="button">+ Añadir</button>
+      </div>
+    </div>
+
+
+    <div>
+      <div class="section-title">5. Color de Trazo</div>
+      <div class="colors">
+        <button class="color-btn active" style="background:#ff9f1c;" data-color="#ff9f1c"></button>
+        <button class="color-btn" style="background:#ff3b30;" data-color="#ff3b30"></button>
+        <button class="color-btn" style="background:#34c759;" data-color="#34c759"></button>
+        <button class="color-btn" style="background:#007aff;" data-color="#007aff"></button>
+        <button class="color-btn" style="background:#af52de;" data-color="#af52de"></button>
+        <button class="color-btn" style="background:#ffffff;" data-color="#ffffff"></button>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title">6. Grosor / Tamaño: <span id="sizeVal">4</span></div>
+      <input type="range" id="brushSize" min="2" max="15" value="4">
+    </div>
+
+    <div>
+      <div class="section-title">7. Vista (Zoom: <span id="zoomVal">100</span>%)</div>
+      <button id="resetViewBtn">🔍 Centrar / Resetear Zoom</button>
+      <p class="hint">Rueda: Zoom | Espacio + Clic: Mover</p>
+    </div>
+
+    <div class="actions">
+      <button id="undoBtn">↩️ Deshacer trazo</button>
+      <button id="clearBtn" class="btn-danger">🗑️ Limpiar todo</button>
+      <button id="saveBtn" class="btn-success">💾 Guardar Estrategia</button>
+    </div>
+  </aside>
+
+  <main class="canvas-container" id="canvasContainer">
+    <div id="boardWrapper" class="board-wrapper">
+      <canvas id="tacticalCanvas" width="1000" height="1000"></canvas>
+      <div id="tokensLayer" class="tokens-layer"></div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
